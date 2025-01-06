@@ -1,6 +1,24 @@
 # Health & Environment Monitor
 
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/Pranav-stac/Quark-25_KnowWiz)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green?logo=streamlit)](http://15.206.147.226:8501/)
+
 A real-time health, weather, and environmental monitoring dashboard built with Streamlit and Python.
+
+## Quick Links
+
+- [GitHub Repository](https://github.com/Pranav-stac/Quark-25_KnowWiz)
+- [Live Demo](http://15.206.147.226:8501/)
+
+## Media
+
+### Images
+- [![Image 1](https://i.ibb.co/RNJwQmM/image1.png)](https://ibb.co/RNJwQmM)
+- [![Image 2](https://i.ibb.co/0fKxVY1/image2.png)](https://ibb.co/0fKxVY1)
+- [![Image 3](https://i.ibb.co/QDvPtJN/image3.png)](https://ibb.co/QDvPtJN)
+
+### Video
+- [Watch Video](https://vimeo.com/1044401486?share=copy)
 
 ## Features
 
