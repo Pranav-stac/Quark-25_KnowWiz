@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    restart: always
+    ports:
+      - "8501:8501"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - OPENWEATHER_API_KEY=${OPENWEATHER_API_KEY}
+      - IQAIR_API_KEY=${IQAIR_API_KEY}
+      - NUTRITIONIX_APP_ID=${NUTRITIONIX_APP_ID}
+      - NUTRITIONIX_API_KEY=${NUTRITIONIX_API_KEY}
+    depends_on:
+      - db
+    networks:
+      - app_network
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    networks:
+      - app_network
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - web
+    networks:
+      - app_network
+    deploy:
+      replicas: 2
+
+networks:
+  app_network:
+    driver: overlay
+
+volumes:
+  postgres_data: 
