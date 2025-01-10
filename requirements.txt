@@ -5,6 +5,7 @@ streamlit
 requests
 pandas
 plotly
+pytest
 sqlalchemy
 alembic
 pydantic[email]
